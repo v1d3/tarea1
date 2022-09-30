@@ -1,4 +1,3 @@
-
 package tarea;
 
 import java.util.Date;
@@ -82,5 +81,15 @@ class Factura{
 }
 
 class Pago{
+    
+}
+
+class Efectivo extends Pago{
+    
+}
+class Transferencia extends Pago{
+    
+}
+class Tarjeta extends Pago{
     
 }
