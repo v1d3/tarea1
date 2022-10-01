@@ -86,7 +86,6 @@ class Factura {
 
 class Pago {
 
-
     private float monto;
     private Date fecha;
 
@@ -98,11 +97,13 @@ class Pago {
     public float getM() {       //Getter 
         return monto;
     }
+    public String DatosDelPago(){
+        return "Monto: "+monto+"\nfecha: "+fecha;
+    }
 
 }
 
 class Efectivo extends Pago {
-
 
     private float Money;
 
@@ -110,13 +111,9 @@ class Efectivo extends Pago {
         Money = m;
     }
 
-    public float getEfect() {
-        return Money;
-    }
-
     public float calcDevolucion() {     //Si la diferencia es >= 0, devuelve su resta, de lo contrario se tomara que deposito todo por tanto, no hay vuelto
-        if (getM() - getEfect() >= 0) {
-            return getM() - getEfect();
+        if (getM() - Money >= 0) {
+            return getM() - Money;
         } else {
             return 0;
         }
@@ -127,21 +124,12 @@ class Efectivo extends Pago {
 
 class Transferencia extends Pago {
 
-
     private String banco;
     private String numCuenta;
 
     public Transferencia(String b, String num) {
         banco = b;
         numCuenta = num;
-    }
-
-    public String getBank() {
-        return banco;
-    }
-
-    public String getNum() {
-        return numCuenta;
     }
 
     public String DatosDeTransferencia() {
@@ -152,7 +140,6 @@ class Transferencia extends Pago {
 
 class Tarjeta extends Pago {
 
-
     private String tipo;
     private String numTransacción;
 
@@ -161,17 +148,8 @@ class Tarjeta extends Pago {
         numTransacción = n;
     }
 
-    public String getTipo(String t) {
-        return tipo;
-    }
-
-    public String getNum(String n) {
-        return numTransacción;
-    }
-
     public String DatosdeTarjeta() {
         return "Tipo: " + tipo + "numTransacción: " + numTransacción;
     }
-
 
 }
