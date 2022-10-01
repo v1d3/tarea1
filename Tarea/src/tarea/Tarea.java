@@ -12,7 +12,7 @@ public class Tarea {
 //Clases
 
 class OrdenCompra {
-    
+
     private Date fecha;
     private String estado;
 
@@ -63,32 +63,42 @@ class Articulo {
 
 class Cliente {
 
+    private String nombre;
+    private String rut;
+
 }
 
-class Direccion{
-    
+class Direccion {
+
 }
 
-class DocTributario{
-    
+class DocTributario {
+
 }
 
-class Boleta{
-    
-}
-class Factura{
-    
+class Boleta {
+
 }
 
-class Pago{
-    
+class Factura {
+
 }
-class Efectivo extends Pago{
-    
+
+class Pago {
+
 }
-class Transferencia extends Pago{
-    
+
+class Efectivo extends Pago {
+
+    public void calcDevolucion() {
+
+    }
 }
-class Tarjeta extends Pago{
-    
+
+class Transferencia extends Pago {
+
+}
+
+class Tarjeta extends Pago {
+
 }
