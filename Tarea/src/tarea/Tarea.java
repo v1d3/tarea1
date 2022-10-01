@@ -97,8 +97,9 @@ class Pago {
     public float getM() {       //Getter 
         return monto;
     }
-    public String DatosDelPago(){
-        return "Monto: "+monto+"\nfecha: "+fecha;
+
+    public String DatosDelPago() {
+        return "Monto: " + monto + "\nfecha: " + fecha;
     }
 
 }
@@ -111,11 +112,11 @@ class Efectivo extends Pago {
         Money = m;
     }
 
-    public float calcDevolucion() {     //Si la diferencia es >= 0, devuelve su resta, de lo contrario se tomara que deposito todo por tanto, no hay vuelto
+    public float calcDevolucion() {     //Si la diferencia es >= 0, retorna 0
         if (getM() - Money >= 0) {
-            return getM() - Money;
-        } else {
             return 0;
+        } else { //De lo contrario se tomara que el Money > getM(), por tanto hay vuelto
+            return -1 * (getM() - Money);
         }
 
     }
