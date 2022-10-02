@@ -6,7 +6,10 @@ import java.util.Date;
 public class Tarea {
 
     public static void main(String[] args) {
-
+ Cliente o = new Cliente("yuli", "2078");
+        System.out.println(o.toString());
+        DocTributario dc = new DocTributario();
+        dc.getdoc();
     }
 }
 //Clases
@@ -66,14 +69,41 @@ class Cliente {
     private String nombre;
     private String rut;
 
+    public Cliente(String N, String R) {
+        nombre = N;
+        rut = R;
+    }
+
+    public String toString() {
+        return "Cliente: " + nombre + " RUT: " + rut;
+    }
+
+    public String numrut() {
+        return rut;
+    }
+
 }
 
 class Direccion {
+private String Direccion;
 
+    public Direccion(String D) {
+        Direccion = D;
+    }
 }
 
 class DocTributario {
+private String numero;
+    private String rut;
+    private Date fecha = new Date();
 
+    public DocTributario() {
+
+    }
+
+    public void getdoc() {
+        System.out.println("Fecha: " + fecha);
+    }
 }
 
 class Boleta {
