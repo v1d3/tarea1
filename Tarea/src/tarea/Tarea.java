@@ -6,10 +6,19 @@ import java.util.Date;
 public class Tarea {
 
     public static void main(String[] args) {
- Cliente o = new Cliente("yuli", "2078");
+        Cliente o = new Cliente("yuli", "2078");
         System.out.println(o.toString());
         DocTributario dc = new DocTributario();
         dc.getdoc();
+        
+        Articulo a1 = new Articulo();
+        a1.SetNameAr("Platanos");
+        a1.SetDescrAr("Platanos a medio Madurar");
+        a1.SetPreAr(1300);
+        a1.SetPrepe(1); //Esta en kilo
+        
+        OrdenCompra o1 = new OrdenCompra(5,a1);
+        System.out.println("peso: "+o1.calcPeso());
     }
 }
 //Clases
@@ -18,40 +27,55 @@ class OrdenCompra {
 
     private Date fecha;
     private String estado;
+    
+    public DetalleOrden m;
 
-    public void calcPrecioSinIVA() {
-
+    public OrdenCompra(int n, Articulo r){
+            m = new DetalleOrden(n,r);
+    }
+    
+    public float calcPrecioSinIVA() {
+       return m.calcPrecioSinIVA();
     }
 
-    public void calcIVA() {
-
+    public float calcIVA() {
+        return m.calcIVA();
     }
 
-    public void calcPrecio() {
+    public float calcPrecio() {
+        return m.calcPrecio();
     }
 
-    public void calcPeso() {
-
+    public float calcPeso() {
+        return m.calcPeso();
     }
 }
 
 class DetalleOrden {
-
+    
     private int cantidad;
-
-    public void calcPrecio() {
+    public Articulo a;
+    
+    public DetalleOrden(int n, Articulo ar){
+        cantidad = n;
+        a = ar;
+    }
+    
+    public float calcPrecio() {
+        
+        return calcIVA()*cantidad;
     }
 
-    public void calcPrecioSinIVA() {
-
+    public float calcPrecioSinIVA() {
+        return a.getPreAr();
     }
 
-    public void calcIVA() {
-
+    public float calcIVA() {
+        return a.getPreAr()+(a.getPreAr()*(19/100));
     }
 
-    public void calcPeso() {
-
+    public float calcPeso() {
+        return a.getPrePe()*cantidad;
     }
 
 }
@@ -62,6 +86,31 @@ class Articulo {
     private String nombre;
     private String descripcion;
     private float precio;
+    
+    public float getPreAr(){
+        return precio;
+    }
+    public float getPrePe(){
+        return peso;
+    }
+    public String getNameAr(){
+        return nombre;
+    }
+    public String getDescrAr(){
+        return descripcion;
+    }
+    public void SetPreAr(float s){
+        precio = s;
+    }
+    public void SetPrepe(float s){
+        peso = s;
+    }
+    public void SetNameAr(String s){
+        nombre = s;
+    }
+    public void SetDescrAr(String s){
+         descripcion = s;
+    }
 }
 
 class Cliente {
@@ -85,7 +134,8 @@ class Cliente {
 }
 
 class Direccion {
-private String Direccion;
+
+    private String Direccion;
 
     public Direccion(String D) {
         Direccion = D;
@@ -93,7 +143,8 @@ private String Direccion;
 }
 
 class DocTributario {
-private String numero;
+
+    private String numero;
     private String rut;
     private Date fecha = new Date();
 
@@ -107,7 +158,7 @@ private String numero;
 }
 
 class Boleta {
-
+    
 }
 
 class Factura {
@@ -119,7 +170,7 @@ class Pago {
     private float monto;
     private Date fecha = new Date();
 
-    public void setterM(float n, Date f){
+    public void setterM(float n, Date f) {
         monto = n;
         fecha = f;
     }
@@ -141,9 +192,11 @@ class Efectivo extends Pago {
         return Money;
     }
 
-    public float calcDevolucion() {     //Si la diferencia es >= 0, devuelve su resta, de lo contrario se tomara que deposito todo por tanto, no hay vuelto
-        if (getM() - getEfect() >= 0) {
-            return getM() - getEfect();
+    public float calcDevolucion() {    
+        if (getM() - getEfect() == 0) {
+            return 0;
+        } else if (getEfect() > getM()) {
+            return (getEfect() - getM());
         } else {
             return 0;
         }
