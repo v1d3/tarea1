@@ -6,9 +6,9 @@ import java.util.Date;
 public class Tarea {
 
     public static void main(String[] args) {
- Cliente o = new Cliente("yuli", "2078");
+        Cliente o = new Cliente("yuli", "2078-5");
         System.out.println(o.toString());
-        DocTributario dc = new DocTributario();
+        DocTributario dc = new DocTributario("154696","125569-4");
         dc.getdoc();
     }
 }
@@ -75,7 +75,7 @@ class Cliente {
     }
 
     public String toString() {
-        return "Cliente: " + nombre + " RUT: " + rut;
+        return "Cliente: " + nombre + "\nRUT: " + rut;
     }
 
     public String numrut() {
@@ -85,7 +85,8 @@ class Cliente {
 }
 
 class Direccion {
-private String Direccion;
+
+    private String Direccion;
 
     public Direccion(String D) {
         Direccion = D;
@@ -93,16 +94,20 @@ private String Direccion;
 }
 
 class DocTributario {
-private String numero;
+
+    private String numero;
     private String rut;
     private Date fecha = new Date();
 
-    public DocTributario() {
-
+    public DocTributario(String N, String R) {
+        numero = N;
+        rut = R;
     }
 
     public void getdoc() {
         System.out.println("Fecha: " + fecha);
+        System.out.println("Numero: " + numero);
+        System.out.println("Rut: " + rut);
     }
 }
 
@@ -119,7 +124,7 @@ class Pago {
     private float monto;
     private Date fecha = new Date();
 
-    public void setterM(float n, Date f){
+    public void setterM(float n, Date f) {
         monto = n;
         fecha = f;
     }
