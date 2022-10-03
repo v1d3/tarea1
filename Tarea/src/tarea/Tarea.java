@@ -26,6 +26,10 @@ public class Tarea {
         System.out.println("Producto con iva: "+o1.calcIVA(do1));
         System.out.println("Producto Total: "+o1.calcPrecio(do1));
         System.out.println("Producto sin iva: "+o1.calcPrecioSinIVA(do1));
+        Efectivo e = new Efectivo();
+        Pago p = new Pago();
+       p.setterM(14000);
+        System.out.println("Efectivo vuelto: "+e.calcDevolucion(o1, do1,p));
     }
 }
 //Clases
@@ -177,39 +181,29 @@ class Pago {
 
     private float monto;
     private Date fecha = new Date();
-
-    public void setterM(float n, Date f) {
+    
+    public void setterM(float n) {
         monto = n;
-        fecha = f;
     }
 
     public float getM() {       //Getter 
         return monto;
     }
+    public String DatosPago(){
+        return "Monto: "+monto+"\nFecha: "+fecha;
+    }
 }
 
-class Efectivo extends Pago {
-
-    private float Money;
-
-    public Efectivo(float m) {
-        Money = m;
-    }
-
-    public float getEfect() {
-        return Money;
-    }
-
-    public float calcDevolucion() {    
-        if (getM() - getEfect() == 0) {
+class Efectivo extends Pago { //-----------------------------Reparar aqui codigo mal hecho, faltan casos, y variable que recuerde si no se paga total
+     
+    public float calcDevolucion(OrdenCompra m, DetalleOrden d, Pago z) {    
+        if ( z.getM()- m.calcPrecio(d)  <= 0) { //Ej: 300-500 < 0, por tanto no hay vuelto
             return 0;
-        } else if (getEfect() > getM()) {
-            return (getEfect() - getM());
-        } else {
-            return 0;
+        }else{
+            return  z.getM() - m.calcPrecio(d);  //Ej: 500-300 > 0, por tanto devuelvo 200
         }
-
-    }
+    
+}
 }
 
 class Transferencia extends Pago {
