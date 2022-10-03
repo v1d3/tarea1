@@ -20,9 +20,12 @@ public class Tarea {
         a1.SetDescrAr("Platanos a medio Madurar");
         a1.SetPreAr(1300);
         a1.SetPrepe(1); //Esta en kilo
+        DetalleOrden do1 = new DetalleOrden(3,a1);
+        OrdenCompra o1 = new OrdenCompra();
         
-        OrdenCompra o1 = new OrdenCompra(5,a1);
-        System.out.println("peso: "+o1.calcPeso());
+        System.out.println("Producto con iva: "+o1.calcIVA(do1));
+        System.out.println("Producto Total: "+o1.calcPrecio(do1));
+        System.out.println("Producto sin iva: "+o1.calcPrecioSinIVA(do1));
     }
 }
 //Clases
@@ -31,26 +34,24 @@ class OrdenCompra {
 
     private Date fecha;
     private String estado;
-    
-    public DetalleOrden m;
 
-    public OrdenCompra(int n, Articulo r){
-            m = new DetalleOrden(n,r);
+    public OrdenCompra(){
+         
     }
     
-    public float calcPrecioSinIVA() {
+    public float calcPrecioSinIVA(DetalleOrden m) {
        return m.calcPrecioSinIVA();
     }
 
-    public float calcIVA() {
+    public float calcIVA(DetalleOrden m) {
         return m.calcIVA();
     }
 
-    public float calcPrecio() {
+    public float calcPrecio(DetalleOrden m) {
         return m.calcPrecio();
     }
 
-    public float calcPeso() {
+    public float calcPeso(DetalleOrden m) {
         return m.calcPeso();
     }
 }
@@ -75,7 +76,7 @@ class DetalleOrden {
     }
 
     public float calcIVA() {
-        return a.getPreAr()+(a.getPreAr()*(19/100));
+        return (a.getPreAr()+((a.getPreAr()*19)/100));
     }
 
     public float calcPeso() {
