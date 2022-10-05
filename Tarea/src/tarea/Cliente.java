@@ -18,8 +18,7 @@ private String nombre;
     /* public String toString() {
         return "Cliente: " + nombre + "\nRUT Cliente: " + rut;
     }*/
-    public void printdatos() {
-        System.out.println("Cliente: " + nombre + "\nRUT Cliente: " + rut);
-        System.out.println("Dirreccion cliente: " + direc.getDireccion());
+    public String toString() {
+        return  "----------------------------\n" +"Cliente: " + nombre + "\nRUT Cliente: " + rut + "\nDirreccion cliente: " + direc.getDireccion()+"\n----------------------------";
     }
 }

@@ -7,23 +7,22 @@ public class Pago {
 
     private float monto;
     private Date fecha = new Date();
-    public ArrayList l;
-    public float aux = 0;
+    public float aPagar;    //Esta variable esta hecha para guardar el valor a pagar en caso de que no se page completamente el producto
 
     public Pago() {
-        l = new ArrayList();
+        aPagar = 0;
     }
 
-    public void setterM(float n) {
+    public void LoquePago(float n) {
         monto = n;
     }
 
-    public float getM() {       //Getter 
+    public float getM() {       //Getter del monto que ponemos para pagar
         return monto;
     }
-
-    public void addPayment_Efective() {
-        
+    
+    public void setOrdenCompra(OrdenCompra m){
+        aPagar = m.calcPrecio();
     }
 
     public String toString() {

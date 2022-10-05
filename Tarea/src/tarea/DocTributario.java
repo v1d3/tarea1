@@ -15,12 +15,8 @@ public class DocTributario {
         d = new Direccion(A);
     }
 
-    public void printdoc() {
-        System.out.println("Fecha: " + fecha);
-        System.out.println("Numero: " + numero);
-        System.out.println("Rut: " + rut);
-        System.out.println("Direccion Empresa: " + d.getDireccion());
-
+    public String toString() {
+        return "----------------------------\n" +"Fecha: " + fecha + "\nNumero: " + numero + "\nRut: " + rut + "\nDireccion Empresa: " + d.getDireccion()+"\n----------------------------";
     }
 }
 

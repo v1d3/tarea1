@@ -20,8 +20,8 @@ public class Transferencia extends Pago {
         return numCuenta;
     }
 
-    public String DatosDeTransferencia() {
-        return "Banco: " + banco + "numCuenta: " + numCuenta;
+    public String toString() {
+        return "----------------------------\n" +"Banco: " + banco + "numCuenta: " + numCuenta+"\n----------------------------" ;
     }
 
 }

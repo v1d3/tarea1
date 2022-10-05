@@ -8,9 +8,9 @@ import tarea.DetalleOrden;
 
 public class OrdenCompra {
 
-     private Date fecha;
+    private Date fecha;
     private String estado;
-    public DetalleOrden p;
+    public DetalleOrden p;  //Creamos esta variable para generar una composicion p para las funciones descritas
 
     public OrdenCompra(int n, Articulo a) {
         p = new DetalleOrden();

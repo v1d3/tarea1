@@ -1,20 +1,19 @@
 package tarea;
+
 import tarea.DetalleOrden;
 import tarea.OrdenCompra;
 import tarea.Pago;
 
+public class Efectivo extends Pago {
 
-public class Efectivo extends Pago{
-
-    public float PaymentHistory;
-
-    public float calcDevolucion(OrdenCompra m, Pago z) {
-        if (z.getM() - m.calcPrecio() <= 0) { //Ej: 300-500 < 0, por tanto no hay vuelto
+    public float calcDevolucion(Pago z) {
+        if( z.aPagar - z.getM() > 0){                       
+            z.aPagar = z.aPagar - z.getM(); 
             return 0;
+        } else if(z.aPagar-z.getM()<0){
+            return -(z.aPagar-z.getM());
         } else {
-            return z.getM() - m.calcPrecio();  //Ej: 500-300 > 0, por tanto devuelvo 200
+            return 0;
         }
-
     }
-    
 }
