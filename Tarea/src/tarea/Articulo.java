@@ -38,5 +38,8 @@ public class Articulo {
     public void SetDescrAr(String s) {
         descripcion = s;
     }
+    public String toString(){
+        return "----------------------------"+"\n"+"Peso: "+getPrePe()+"\nNombre: "+getNameAr()+"\nDescripcion: "+getDescrAr()+"\nPrecio: "+getPreAr()+"\n----------------------------";
+    }
     
 }

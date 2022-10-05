@@ -10,25 +10,30 @@ public class OrdenCompra {
 
      private Date fecha;
     private String estado;
+    public DetalleOrden p;
 
-    public OrdenCompra() {
-
+    public OrdenCompra(int n, Articulo a) {
+        p = new DetalleOrden();
+        p.SetterArt(n, a);
     }
 
-    public float calcPrecioSinIVA(DetalleOrden m) {
-        return m.calcPrecioSinIVA();
+    public float calcPrecioSinIVA() {
+        return p.calcPrecioSinIVA();
     }
 
-    public float calcIVA(DetalleOrden m) {
-        return m.calcIVA();
+    public float calcIVA() {
+        return p.calcIVA();
     }
 
-    public float calcPrecio(DetalleOrden m) {
-        return m.calcPrecio();
+    public float calcPrecio() {
+        return p.calcPrecio();
     }
 
-    public float calcPeso(DetalleOrden m) {
-        return m.calcPeso();
+    public float calcPeso() {
+        return p.calcPeso();
+    }
+    public String toString(){
+        return "----------------------------"+"\n"+"Precio sin IVA: "+calcPrecioSinIVA()+"\nPrecio con IVA: "+calcIVA()+"\nPrecio Total: "+calcPrecio()+"\nPeso Total: "+calcPeso()+"\n----------------------------";
     }
     
 }
