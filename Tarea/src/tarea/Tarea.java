@@ -50,23 +50,10 @@ public class Tarea {
         DocTributario dc4= new DocTributario("15232322","12552323-5", "Coquimbo");
 
 
-
-
-        //Orden de Compra---------------------------------------------------
-        OrdenCompra oc1 = new OrdenCompra(3,a1);
-        OrdenCompra oc2 = new OrdenCompra(1,a2);
-        OrdenCompra oc3 = new OrdenCompra(2,a3);
+        //Ordenes de compra y pagos---------------------------------------
+        OrdenCompra oc1 = new OrdenCompra();
 
         
-        //Prints-------------------------------------------------------------------
-        System.out.println("Precio Con IVA: " + oc1.calcPrecio());
         
-        Pago p1 = new Pago();
-        Efectivo e = new Efectivo();
-        p1.setOrdenCompra(oc1);  //Aqui
-        p1.LoquePago(3000);
-        p1.LoquePago(3000);
-        System.out.println("Vuelto: " + e.calcDevolucion(p1));
-        System.out.println("Vuelto: " + e.calcDevolucion(p1));
     }
 }
