@@ -9,12 +9,11 @@ public class OrdenCompra {
     private Date fecha;
     private String estado;
     public DetalleOrden p;  //Creamos esta variable para generar una composicion p para las funciones descritas
-    public Boleta b;
+    public Boleta b;    
     public Factura f;
     public String tipo;
-    public ArrayList<DetalleOrden> l;
-    public int Cantidad;
-    public float aux = 0;
+    public ArrayList<DetalleOrden> l;   //Para crear el Arraylist que servira para sumar los Articulos
+    public float aux = 0;   //Variable que nos permitira almacenar el precio de la suma de los Articulos
    
     
     public OrdenCompra() {

@@ -1,11 +1,11 @@
 package tarea;
 
 public class DetalleOrden {
- private int cantidad;
+
+    private int cantidad;
     public Articulo a;
-   
-    
-    public void SetterArt(int n, Articulo ar){
+
+    public void SetterArt(int n, Articulo ar) {
         cantidad = n;
         a = ar;
     }
