@@ -1,4 +1,5 @@
 package tarea;
+
 public class Direccion {
 
     private String Direccion;
@@ -10,5 +11,5 @@ public class Direccion {
     public String getDireccion() {
         return Direccion;
     }
-    
+
 }

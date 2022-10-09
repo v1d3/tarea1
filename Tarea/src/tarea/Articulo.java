@@ -1,7 +1,7 @@
 package tarea;
+
 public class Articulo {
 
-  
     private float peso;
     private String nombre;
     private String descripcion;
@@ -38,8 +38,9 @@ public class Articulo {
     public void SetDescrAr(String s) {
         descripcion = s;
     }
-    public String toString(){
-        return "----------------------------"+"\n"+"Peso: "+getPrePe()+"\nNombre: "+getNameAr()+"\nDescripcion: "+getDescrAr()+"\nPrecio: "+getPreAr()+"\n----------------------------";
+
+    public String toString() {
+        return "----------------------------" + "\n" + "Peso: " + getPrePe() + "\nNombre: " + getNameAr() + "\nDescripcion: " + getDescrAr() + "\nPrecio: " + getPreAr() + "\n----------------------------";
     }
-    
+
 }

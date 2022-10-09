@@ -20,8 +20,8 @@ public class Pago {
     public float getM() {       //Getter del monto que ponemos para pagar
         return monto;
     }
-    
-    public void setOrdenCompra(OrdenCompra m){
+
+    public void setOrdenCompra(OrdenCompra m) {
         aPagar = m.calcPrecio();
     }
 

@@ -1,8 +1,8 @@
 package tarea;
+
 import tarea.Pago;
 
-
-public class Tarjeta extends Pago{
+public class Tarjeta extends Pago {
 
     private String tipo;
     private String numTransacción;
@@ -23,5 +23,5 @@ public class Tarjeta extends Pago{
     public String toString() {
         return "\nTipo: " + tipo + "\nnumTransaccion: " + numTransacción;
     }
-    
+
 }

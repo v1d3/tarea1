@@ -1,5 +1,5 @@
-
 package tarea;
+
 import tarea.Pago;
 
 public class Transferencia extends Pago {
@@ -21,7 +21,7 @@ public class Transferencia extends Pago {
     }
 
     public String toString() {
-        return "----------------------------\n" +"\nBanco: " + banco + "\nnumCuenta: " + numCuenta+"\n----------------------------" ;
+        return "----------------------------\n" + "\nBanco: " + banco + "\nnumCuenta: " + numCuenta + "\n----------------------------";
     }
 
 }
