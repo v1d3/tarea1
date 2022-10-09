@@ -45,8 +45,10 @@ public class Tarea {
 
         //Ordenes de compra, docTributarios y pagos---------------------------------------
         OrdenCompra oc1 = new OrdenCompra();
+        oc1.setEstado("Activo");
         OrdenCompra oc2 = new OrdenCompra();
-
+        oc2.setEstado("Activo");
+        
         oc1.createDoc("15123322", "12523269-3", "Dichato", "Boleta");
         oc2.createDoc("23453245", "32423441-3", "Amongus", "Factura");
 
@@ -110,5 +112,9 @@ public class Tarea {
         Tarjeta tar = new Tarjeta("visa", "1233 9231 1231 2323");
 
         System.out.println("Pago realizado, datos: \n" + tar.toString());
+        
+        //Informacion de Ordenes de Compra
+        System.out.println(oc1.toString());
+        System.out.println(oc2.toString());
     }
 }

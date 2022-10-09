@@ -6,7 +6,7 @@ import java.util.ArrayList;
 //package ordencompra;
 public class OrdenCompra {
 
-    private Date fecha;
+    private Date fecha = new Date();
     private String estado;
     public DetalleOrden p;  //Creamos esta variable para generar una composicion p para las funciones descritas
     public Boleta b;
@@ -27,6 +27,12 @@ public class OrdenCompra {
         } else if ("Factura".equals(tipo)) {
             f = new Factura(A, B, C);
         }
+    }
+    public void setEstado(String s){
+        estado = s;
+    }
+    public String FechaEstado(){
+        return "\nFecha: "+fecha+"\nEstado: "+estado;
     }
 
     public String DevuelveDoc() {
@@ -89,5 +95,8 @@ public class OrdenCompra {
             aux = aux + k.calcPeso();
         }
         return aux;
+    }
+    public String toString(){
+        return "\nFecha: "+fecha+"\nEstado:"+estado;
     }
 }
