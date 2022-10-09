@@ -9,16 +9,31 @@ public class DocTributario {
     private Date fecha = new Date();
     public Direccion d;
 
-    public DocTributario(String N, String R, String D){
+    public DocTributario(String N, String R, String A) {
         numero = N;
         rut = R;
-        d = new Direccion(D);
+        d = new Direccion(A);
     }
 
     public String toString() {
         return "----------------------------\n" +"Fecha: " + fecha + "\nNumero: " + numero + "\nRut: " + rut + "\nDireccion Empresa: " + d.getDireccion()+"\n----------------------------";
     }
     
+    
+    public String getrut(){
+        return rut;
+    }
+     public String getnumero(){
+        return numero;
+    }
+      public String getdireccion(){
+        return d.getDireccion();
+    }
+    
+}
+
+class Boleta {
+
 }
 
 class Factura {

@@ -1,9 +1,11 @@
 package tarea;
 
+import tarea.Articulo;
+
 public class DetalleOrden {
  private int cantidad;
     public Articulo a;
-   
+
     
     public void SetterArt(int n, Articulo ar){
         cantidad = n;

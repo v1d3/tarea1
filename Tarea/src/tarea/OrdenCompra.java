@@ -1,7 +1,6 @@
 package tarea;
 
 import java.util.Date;
-import tarea.DetalleOrden;
 import java.util.ArrayList;
 
 //package ordencompra;
@@ -10,47 +9,87 @@ public class OrdenCompra {
     private Date fecha;
     private String estado;
     public DetalleOrden p;  //Creamos esta variable para generar una composicion p para las funciones descritas
-    public DocTributario a;
-    public ArrayList l;
+    public Boleta b;
+    public Factura f;
+    public String tipo;
+    public ArrayList<DetalleOrden> l;
+    public int Cantidad;
     public float aux = 0;
    
     
-    public OrdenCompra() { 
-        l = new ArrayList<DetalleOrden>();
+    public OrdenCompra() {
+        l = new ArrayList();
+        p = new DetalleOrden();
     }
     
-    public void SetDocTributario(){
+    public void createDoc(String A,String B, String C,String Tipo){
+        tipo = Tipo;
+        if("Boleta".equals(Tipo))
+            b = new Boleta(A,B,C);
         
+        else if("Factura".equals(tipo))
+            f = new Factura(A,B,C);
+    }
+    
+    public String DevuelveDoc(){
+        if("Boleta".equals(tipo))
+            return b.toString();
+        
+        else if("Factura".equals(tipo))
+            return f.toString();
+        else
+            return null;
     }
 
-    public void SetterArticulos(int n, Articulo d) {
-        p.SetterArt(n, d);
-        l.add(p);
+    public void SetterArticulos(int n, Articulo a) {
+        p.SetterArt(n,a );                       //Ingresa la cantidad y el articulo comprado
+        l.add(p);                                 //Agrega el detalle de la compra a una lista
+     
+    }
+    
+    public void ImprimePreciosIndividualesYtotales(){
+        DetalleOrden o;
+        for(int i=0;i<l.size();i++){
+            o = (DetalleOrden) l.get(i);
+            System.out.println(o.calcIVA());
+            System.out.println(o.calcPrecio());
+            
+        }
     }
 
     public float calcPrecio() {
         aux = 0;
-        for(int i = 0 ; i < l.size(); i++){
-            DetalleOrden k = (DetalleOrden) l.remove(i);
-            aux += k.calcPeso();
+        for(int i = 0; i<l.size(); i++){
+            DetalleOrden k = l.remove(0);
+            aux = aux + k.calcPrecio();
         }
         return aux;
     }
 
     public float calcPrecioSinIVA() {
         aux = 0;
-        for(int i = 0 ; i < l.size(); i++){
-            DetalleOrden k = (DetalleOrden) l.remove(i);
-            aux += k.calcPrecioSinIVA();
+        for(int i = 0; i<l.size(); i++){
+            DetalleOrden k = l.remove(0);
+            aux = aux + k.calcPrecioSinIVA();
         }
         return aux;
     }
 
-    public void calcIVA() {
-        
+    public float calcIVA() {
+        aux = 0;
+        for(int i = 0; i<l.size(); i++){
+            DetalleOrden k = l.remove(0);
+            aux = aux + k.calcIVA();
+        }
+        return aux;
     }
 
-    public void calcPeso() {
-
+    public float calcPeso() {
+        aux = 0;
+        for(int i = 0; i<l.size(); i++){
+            DetalleOrden k = l.remove(0);
+            aux = aux + k.calcPeso();
+        }
+        return aux;
     }
 }

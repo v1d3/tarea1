@@ -1,6 +1,5 @@
 package tarea;
 
-import java.util.ArrayList;
 import java.util.Date;
 
 //Main
@@ -43,29 +42,17 @@ public class Tarea {
         a5.SetPreAr(2190);
         a5.SetPrepe(1);
         
-        //Ordenes de compra y pagos---------------------------------------
-        OrdenCompra oc1 = new OrdenCompra();
-        OrdenCompra oc2 = new OrdenCompra();
-        
-        oc1.SetterArticulos(3,a1);
-        oc1.SetterArticulos(1,a3);
-        oc1.SetterArticulos(5,a2);
-        oc1.SetterArticulos(9,a4);
-        
-        oc1.ImprimePreciosIndividualesYtotales();
-        
         //DocTributarios-------------------------------------------------------
 
-        oc1.createDoc("15123322","12523269-3", "Dichato","Boleta");
-        oc2.createDoc("23453245", "32423441-3", "Amongus","Factura");
-    
-   
-        System.out.println(oc1.DevuelveDoc());
-        System.out.println(oc2.DevuelveDoc());
-        
-        System.out.println("Precio: "+oc1.calcPrecio());
-        
+        DocTributario dc1= new DocTributario("15123322","12523269-3", "Dichato");
+        DocTributario dc2= new DocTributario("12233112","12523292-k", "Tomé");
+        DocTributario dc3= new DocTributario("14234222","12553232-4", "Rancagua");
+        DocTributario dc4= new DocTributario("15232322","12552323-5", "Coquimbo");
 
+
+        //Ordenes de compra y pagos---------------------------------------
+        OrdenCompra oc1 = new OrdenCompra();
+        
         
 
         
