@@ -20,8 +20,8 @@ public class Tarjeta extends Pago{
         return numTransacción;
     }
 
-    public String DatosdeTarjeta() {
-        return "Tipo: " + tipo + "numTransacción: " + numTransacción;
+    public String toString() {
+        return "\nTipo: " + tipo + "\nnumTransaccion: " + numTransacción;
     }
     
 }

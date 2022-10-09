@@ -43,32 +43,75 @@ public class Tarea {
         a5.SetPreAr(2190);
         a5.SetPrepe(1);
         
-        //Ordenes de compra y pagos---------------------------------------
+        //Ordenes de compra, docTributarios y pagos---------------------------------------
         OrdenCompra oc1 = new OrdenCompra();
         OrdenCompra oc2 = new OrdenCompra();
         
-        oc1.SetterArticulos(3,a1);
+        oc1.createDoc("15123322","12523269-3", "Dichato","Boleta");
+        oc2.createDoc("23453245", "32423441-3", "Amongus","Factura");
+        
+        Pago p1 = new Pago();
+        Efectivo e1 =new Efectivo();
+        //Compra 1
+        
+        oc1.SetterArticulos(3,a1); //Articulos que queremos comprar
         oc1.SetterArticulos(1,a3);
         oc1.SetterArticulos(5,a2);
         oc1.SetterArticulos(9,a4);
         
+        //Pago 1
+        p1.setOrdenCompra(oc1); //Lo que debemos pagar
+        p1.LoquePago(40000); //Esto es para pagar en efectivo
+        
         oc1.ImprimePreciosIndividualesYtotales();
+        System.out.println("Vuelto1: "+e1.calcDevolucion(p1));   //Vuelto respecto al pago por efectivo
         
-        //DocTributarios-------------------------------------------------------
+        //Compra 2
+        oc1.SetterArticulos(40, a1);
+        oc1.SetterArticulos(2,a3);
+        oc1.SetterArticulos(5,a4);
+        //Pago 2
+        p1.setOrdenCompra(oc1);
+        p1.LoquePago(300000);
+        
+        System.out.println("Vuelto2 :"+ e1.calcDevolucion(p1));
+        
+        //Compra 3
+        oc2.SetterArticulos(1, a3);
+        oc2.SetterArticulos(23,a2);
+        oc2.SetterArticulos(5,a5);
+        
+        //Pago 3
+        
+        p1.setOrdenCompra(oc2);
+        p1.LoquePago(40000);
+        
+        System.out.println("Vuelto3: "+e1.calcDevolucion(p1));
+        
+        //Compra 4
+        
+        oc2.SetterArticulos(1, a3);
+        oc2.SetterArticulos(2, a1);
+        oc2.SetterArticulos(8, a2);
+        
+        //Pago 4
+        
+        p1.setOrdenCompra(oc2);
+        p1.LoquePago(10000);
+        Transferencia tr = new Transferencia("Banco Estado","4312 2999 5555");
 
-        oc1.createDoc("15123322","12523269-3", "Dichato","Boleta");
-        oc2.createDoc("23453245", "32423441-3", "Amongus","Factura");
-    
-   
-        System.out.println(oc1.DevuelveDoc());
-        System.out.println(oc2.DevuelveDoc());
+        System.out.println("Transferencia Realizada, datos:\n "+tr.toString());
         
-        System.out.println("Precio: "+oc1.calcPrecio());
+        //Compra 4
+        oc2.SetterArticulos(1, a5);
+        oc2.SetterArticulos(2, a2);
+        oc2.SetterArticulos(8, a1);
+        oc2.SetterArticulos(6, a3);
         
-
+        //Pago 5
+        p1.setOrdenCompra(oc2);
+        Tarjeta tar = new Tarjeta("visa","1233 9231 1231 2323");
         
-
-        
-        
+        System.out.println("Pago realizado, datos: \n"+tar.toString());     
     }
 }
